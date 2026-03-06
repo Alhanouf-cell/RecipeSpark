@@ -1,5 +1,3 @@
-const API_KEY = "YOUR_API_KEY";
-
 async function generateRecipe(){
 
 let ingredients = document.getElementById("ingredients").value;
@@ -16,36 +14,15 @@ loading.classList.remove("hidden");
 
 try{
 
-const response = await fetch("https://api.openai.com/v1/chat/completions",{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"Authorization":"Bearer " + API_KEY
-},
-body: JSON.stringify({
-model:"gpt-4.1-mini",
-messages:[
-{
-role:"system",
-content:"You are a helpful AI chef."
-},
-{
-role:"user",
-content:`Create a recipe using these ingredients: ${ingredients}.
-Include recipe name and steps.`
-}
-],
-temperature:0.8
-})
-});
+// طلب الوصفة من الـ API الخاص بنا على Vercel
+const response = await fetch(`/api/recipe?ingredients=${encodeURIComponent(ingredients)}`);
 
 const data = await response.json();
 
 loading.classList.add("hidden");
 
-let recipeText = data.choices[0].message.content;
-
-typeWriter(recipeText,result);
+// السيرفر يرجّع { recipe: "..." }
+typeWriter(data.recipe || "No recipe generated.", result);
 
 }
 catch(error){
@@ -145,6 +122,5 @@ setTimeout(typing,10);
 }
 
 typing();
-
 
 }
