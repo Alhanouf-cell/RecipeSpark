@@ -1,4 +1,4 @@
-const API_KEY = "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";
+const API_KEY = "YOUR_API_KEY";
 
 async function generateRecipe(){
 
@@ -145,5 +145,6 @@ setTimeout(typing,10);
 }
 
 typing();
+
 
 }
