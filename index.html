@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RecipeSpark</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="food-background" id="foodBg"></div>
+<div class="container">
+
+<h1>RecipeSpark ✨🤖👩🏻‍🍳</h1>
+<p class="subtitle">Cook Smart, Waste Less</p>
+
+<textarea id="ingredients" placeholder="Enter ingredients... (eggs, cheese, tomato)"></textarea>
+
+<button onclick="generateRecipe()">Generate Recipe</button>
+
+<button class="surpriseBtn" onclick="surpriseMe()">
+🎲 Surprise Me
+</button>
+
+<div id="loading" class="hidden">
+<div class="loader"></div>
+<p>AI is thinking...</p>
+</div>
+
+<div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
